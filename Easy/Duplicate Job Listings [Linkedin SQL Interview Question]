@@ -1,0 +1,8 @@
+WITH count_duplicate AS (
+SELECT company_id, COUNT(company_id) AS duplicate_companies
+FROM job_listings
+GROUP BY company_id
+HAVING COUNT(company_id) > 1
+)
+
+SELECT COUNT(*) FROM count_duplicate;
