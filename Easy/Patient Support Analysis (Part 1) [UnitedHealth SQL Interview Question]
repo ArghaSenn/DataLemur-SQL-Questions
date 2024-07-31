@@ -1,0 +1,10 @@
+WITH call_count_t AS (
+  SELECT policy_holder_id, COUNT(case_id) AS call_count
+  FROM callers
+  GROUP BY policy_holder_id
+)
+
+
+SELECT COUNT(policy_holder_id)
+FROM call_count_t
+WHERE call_count >= 3;
